@@ -4,6 +4,9 @@
         "dockerfile": "Dockerfile",
         "context": "."
     },
+    "workspaceFolder": "/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    
     "customizations": {
         "vscode": {
             "extensions": [
@@ -21,6 +24,6 @@
     "mounts": [
         "source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/lunaruser/.gitconfig,type=bind,consistency=cached"
     ],
-    "postCreateCommand": "echo '✅ LunarVim installed. Use: lvim'",
-    "postAttachCommand": "echo '🚀 Environment ready - LunarVim: lvim, Neovim: nvim'"
+    "postCreateCommand": "sudo chown -R lunaruser:lunaruser /workspace && echo '✅ LunarVim installed. Use: lvim'",
+    "postAttachCommand": "echo '🚀 Environment ready - Working directory: $(pwd) - LunarVim: lvim, Neovim: nvim'"
 }
